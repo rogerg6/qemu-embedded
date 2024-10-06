@@ -46,12 +46,11 @@ build_kernel() {
         cp ${KERNEL_DIR}/arch/${ARCH}/boot/dts/vexpress-v2p-ca9.dtb ./
 
         # modules
+        rm -rf ./rootfs/home/*
         make -C ./mydriver-demo/platform ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
         cp ./mydriver-demo/platform/*.ko ./rootfs/home
         # char dev
         make -C ./mydriver-demo/char/led ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
-        # cp ./mydriver-demo/char/*.ko ./rootfs/home
-        # cp ./mydriver-demo/char/hello_drv_test ./rootfs/home
 
     elif test $1 -eq 2; then
         make -C ${KERNEL_DIR} ARCH=${ARCH} menuconfig

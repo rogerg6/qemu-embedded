@@ -1,5 +1,8 @@
+/**
+ * @brief led驱动, 其实就是字符设备驱动
+ * 提供file_operations结构体, 创建设备节点, 供应用层调用
+ */
 #include <linux/module.h>
-
 #include <linux/fs.h>
 #include <linux/errno.h>
 #include <linux/miscdevice.h>
@@ -25,6 +28,19 @@ static char char_buf[1024];
 
 static struct class           *led_class;
 static struct gpio_operations *led_ops;
+
+void led_device_create(int minor) {
+    device_create(led_class, NULL, MKDEV(major, minor), NULL, "led%d", minor);
+}
+void led_device_destroy(int minor) {
+    device_destroy(led_class, MKDEV(major, minor));
+}
+void register_led_operations(struct gpio_operations *ops) {
+    led_ops = ops;
+}
+EXPORT_SYMBOL(led_device_create);
+EXPORT_SYMBOL(led_device_destroy);
+EXPORT_SYMBOL(register_led_operations);
 
 static int led_open(struct inode *inode, struct file *file) {
     int minor = -1;
@@ -67,7 +83,7 @@ static const struct file_operations led_fops = {
 };
 
 static int __init led_init(void) {
-    int err, i;
+    int err;
     // 注册字符设备
     major = register_chrdev(0, "led", &led_fops);
 
@@ -77,23 +93,10 @@ static int __init led_init(void) {
     if (IS_ERR(led_class))
         return -1;
 
-    // 创建设备节点
-    for (i = 0; i < LED_NUM; i++) {
-        device_create(led_class, NULL, MKDEV(major, i), NULL, "led%d", i);
-    }
-
-    led_ops = get_gpio_ops();
-
     return 0;
 }
 
 static void __exit led_exit(void) {
-    int i;
-    led_ops = NULL;
-
-    for (i = 0; i < LED_NUM; i++) {
-        device_destroy(led_class, MKDEV(major, i));
-    }
     class_destroy(led_class);
     unregister_chrdev(major, "led");
 }
