@@ -15,7 +15,7 @@
 #include <linux/kmod.h>
 #include <linux/gfp.h>
 
-#include "board.h"
+#include "chip_gpio_ops.h"
 
 #define MIN(x, y) (x < y ? x : y)
 #define LED_NUM 3   // the number of leds
@@ -23,8 +23,8 @@
 static int  major = -1;
 static char char_buf[1024];
 
-static struct class          *led_class;
-static struct led_operations *led_ops;
+static struct class           *led_class;
+static struct gpio_operations *led_ops;
 
 static int led_open(struct inode *inode, struct file *file) {
     int minor = -1;
@@ -82,7 +82,7 @@ static int __init led_init(void) {
         device_create(led_class, NULL, MKDEV(major, i), NULL, "led%d", i);
     }
 
-    led_ops = get_led_ops();
+    led_ops = get_gpio_ops();
 
     return 0;
 }

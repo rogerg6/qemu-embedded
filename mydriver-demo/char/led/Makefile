@@ -2,7 +2,7 @@
 KERNELDIR := ../../../linux-3.10.14
 CURRENT_PATH := $(shell pwd)
 
-led-y := led_drv.o board.o
+led-y := led_drv.o board_resource.o chip_gpio_ops.o
 obj-m	+= led.o
 
 build: kernel_modules
