@@ -1,0 +1,188 @@
+@startuml linux-3.10.14
+' skinparam style strictuml
+' left to right direction
+skinparam defaultFontName "Courier"
+
+namespace DEVICE_MODEL {
+    object kset {
+        struct list_head              list
+        ..
+        struct kobject                kobj
+        ..
+        const struct kset_uevent_ops *uevent_ops
+    }
+
+    object kobject0{
+        const char          *name
+        ..
+        struct list_head     entry
+        ..
+        struct kobject      *parent
+        ..
+        struct kset         *kset
+        ..
+        struct kobj_type    *ktype
+        ..
+        struct sysfs_dirent *sd
+        ..
+        struct kref          kref
+    }
+
+    object kobject1 {
+        const char          *name
+        ..
+        struct list_head     entry
+        ..
+        struct kobject      *parent
+        ..
+        struct kset         *kset
+        ..
+        struct kobj_type    *ktype
+        ..
+        struct sysfs_dirent *sd
+        ..
+        struct kref          kref
+    }
+
+    object kobject2 {
+        const char          *name
+        ..
+        struct list_head     entry
+        ..
+        struct kobject      *parent
+        ..
+        struct kset         *kset
+        ..
+        struct kobj_type    *ktype
+        ..
+        struct sysfs_dirent *sd
+        ..
+        struct kref          kref
+    }
+
+    object kobj_type {
+        void (*release)(struct kobject *kobj)
+        const struct sysfs_ops *sysfs_ops
+        struct attribute      **default_attrs //attribute 数组
+    }
+
+    object sysfs_ops {
+        ssize_t	(*show)(struct kobject *, struct attribute *,char *)
+        ssize_t	(*store)(struct kobject *,struct attribute *,const char *, size_t)
+        const void *(*namespace)(struct kobject *, const struct attribute *)
+    }
+    note top of sysfs_ops
+    读取kboj_type.default_attrs的操作
+    end note
+
+    object bus_type {
+        const char		*name
+        ..
+        const char		*dev_name
+        ..
+        struct device		*dev_root
+        ..
+        struct bus_attribute	*bus_attrs
+        ..
+        struct device_attribute	*dev_attrs
+        ..
+        struct driver_attribute	*drv_attrs
+        ..
+        struct subsys_private *p
+        ..
+        const struct dev_pm_ops *pm
+        ..
+        struct iommu_ops *iommu_ops
+        --
+        int (*match)(struct device *dev, struct device_driver *drv)
+        int (*uevent)(struct device *dev, struct kobj_uevent_env *env)
+        int (*probe)(struct device *dev)
+        int (*remove)(struct device *dev)
+        void (*shutdown)(struct device *dev)
+        int (*suspend)(struct device *dev, pm_message_t state)
+        int (*resume)(struct device *dev)
+    }
+
+    object subsys_private {
+        struct kset subsys
+        ..
+        struct kset *devices_kset
+        ..
+        struct kset *drivers_kset
+        ..
+        struct list_head interfaces
+        ..
+        struct klist klist_devices
+        ..
+        struct klist klist_drivers
+        ..
+        struct bus_type *bus
+        ..
+        struct class *class
+    }
+    ' note top of subsys_private
+    ' 存储总线中的重要数据
+    ' end note
+    note right of subsys_private::klist_devices
+    device list
+    end note
+    note right of subsys_private::klist_drivers
+    driver list
+    end note
+
+    object cdev {
+        struct kobject kobj;
+        struct module *owner;
+        const struct file_operations *ops;
+        struct list_head list;
+        dev_t dev;
+        unsigned int count;
+    };
+
+    object device {
+        struct device		*parent
+        struct device_private	*p
+        struct kobject kobj
+        const char		*init_name
+        const struct device_type *type
+
+        struct bus_type	*bus
+        struct device_driver *driver 
+        void		*platform_data
+    }
+
+    object device_driver {
+        const char		*name
+        const char		*mod_name	/* used for built-in modules */
+        struct bus_type		*bus
+        struct module		*owner
+
+        const struct of_device_id	*of_match_table
+        const struct acpi_device_id	*acpi_match_table
+
+        const struct attribute_group **groups
+        const struct dev_pm_ops *pm
+        struct driver_private *p
+        --
+        int (*probe) (struct device *dev)
+        int (*remove) (struct device *dev)
+        void (*shutdown) (struct device *dev)
+        int (*suspend) (struct device *dev, pm_message_t state)
+        int (*resume) (struct device *dev)
+    }
+
+
+
+    kset::list --> kobject1::entry
+    kobject1::entry --> kobject2::entry
+    kobject1::parent -u-> kobject0: parent 
+    kobject0::ktype ..r..> kobj_type
+    kobject2::entry ---> kset::list
+    kobj_type::sysfsops .r.> sysfs_ops
+
+    bus_type::p .r.> subsys_private
+
+
+}
+
+@enduml

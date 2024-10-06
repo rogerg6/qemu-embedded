@@ -1,0 +1,1648 @@
+Output of:
+/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/arm-linux-gnueabihf-gcc -Wall -Wshadow -Wwrite-strings -Wundef -Wstrict-prototypes -Wunused -Wunused-parameter -Wunused-function -Wunused-value -Wmissing-prototypes -Wmissing-declarations -Wno-format-security -Wdeclaration-after-statement -Wold-style-definition -fno-builtin-strlen -finline-limit=0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fno-guess-branch-probability -funsigned-char -static-libgcc -falign-functions=1 -falign-jumps=1 -falign-labels=1 -falign-loops=1 -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-builtin-printf -Os -static -o busybox_unstripped -Wl,--sort-common -Wl,--sort-section,alignment -Wl,--start-group applets/built-in.o archival/lib.a archival/libarchive/lib.a console-tools/lib.a coreutils/lib.a coreutils/libcoreutils/lib.a debianutils/lib.a klibc-utils/lib.a e2fsprogs/lib.a editors/lib.a findutils/lib.a init/lib.a libbb/lib.a libpwdgrp/lib.a loginutils/lib.a mailutils/lib.a miscutils/lib.a modutils/lib.a networking/lib.a networking/libiproute/lib.a networking/udhcp/lib.a printutils/lib.a procps/lib.a runit/lib.a selinux/lib.a shell/lib.a sysklogd/lib.a util-linux/lib.a util-linux/volume_id/lib.a archival/built-in.o archival/libarchive/built-in.o console-tools/built-in.o coreutils/built-in.o coreutils/libcoreutils/built-in.o debianutils/built-in.o klibc-utils/built-in.o e2fsprogs/built-in.o editors/built-in.o findutils/built-in.o init/built-in.o libbb/built-in.o libpwdgrp/built-in.o loginutils/built-in.o mailutils/built-in.o miscutils/built-in.o modutils/built-in.o networking/built-in.o networking/libiproute/built-in.o networking/udhcp/built-in.o printutils/built-in.o procps/built-in.o runit/built-in.o selinux/built-in.o shell/built-in.o sysklogd/built-in.o util-linux/built-in.o util-linux/volume_id/built-in.o -Wl,--end-group -Wl,--start-group -lm -lresolv -Wl,--end-group -Wl,--warn-common -Wl,-Map,busybox_unstripped.map -Wl,--verbose
+==========
+GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.04-20130415 - Linaro GCC 2013.04) 2.23.1
+  Supported emulations:
+   armelf_linux_eabi
+   armelfb_linux_eabi
+using internal linker script:
+==================================================
+/* Script for -z combreloc: combine and sort reloc sections */
+OUTPUT_FORMAT("elf32-littlearm", "elf32-bigarm",
+	      "elf32-littlearm")
+OUTPUT_ARCH(arm)
+ENTRY(_start)
+SEARCH_DIR("=/usr/local/lib/arm-linux-gnueabihf"); SEARCH_DIR("=/usr/local/lib"); SEARCH_DIR("=/lib/arm-linux-gnueabihf"); SEARCH_DIR("=/lib"); SEARCH_DIR("=/usr/lib/arm-linux-gnueabihf"); SEARCH_DIR("=/usr/lib");
+SECTIONS
+{
+  /* Read-only sections, merged into text segment: */
+  PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x00008000)); . = SEGMENT_START("text-segment", 0x00008000) + SIZEOF_HEADERS;
+  .interp         : { *(.interp) }
+  .note.gnu.build-id : { *(.note.gnu.build-id) }
+  .hash           : { *(.hash) }
+  .gnu.hash       : { *(.gnu.hash) }
+  .dynsym         : { *(.dynsym) }
+  .dynstr         : { *(.dynstr) }
+  .gnu.version    : { *(.gnu.version) }
+  .gnu.version_d  : { *(.gnu.version_d) }
+  .gnu.version_r  : { *(.gnu.version_r) }
+  .rel.dyn        :
+    {
+      *(.rel.init)
+      *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+      *(.rel.fini)
+      *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+      *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+      *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+      *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+      *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+      *(.rel.ctors)
+      *(.rel.dtors)
+      *(.rel.got)
+      *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+      PROVIDE_HIDDEN (__rel_iplt_start = .);
+      *(.rel.iplt)
+      PROVIDE_HIDDEN (__rel_iplt_end = .);
+      PROVIDE_HIDDEN (__rela_iplt_start = .);
+      PROVIDE_HIDDEN (__rela_iplt_end = .);
+    }
+  .rela.dyn       :
+    {
+      *(.rela.init)
+      *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+      *(.rela.fini)
+      *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+      *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+      *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+      *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+      *(.rela.ctors)
+      *(.rela.dtors)
+      *(.rela.got)
+      *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+      PROVIDE_HIDDEN (__rel_iplt_start = .);
+      PROVIDE_HIDDEN (__rel_iplt_end = .);
+      PROVIDE_HIDDEN (__rela_iplt_start = .);
+      *(.rela.iplt)
+      PROVIDE_HIDDEN (__rela_iplt_end = .);
+    }
+  .rel.plt        :
+    {
+      *(.rel.plt)
+    }
+  .rela.plt       :
+    {
+      *(.rela.plt)
+    }
+  .init           :
+  {
+    KEEP (*(SORT_NONE(.init)))
+  }
+  .plt            : { *(.plt) }
+  .iplt           : { *(.iplt) }
+  .text           :
+  {
+    *(.text.unlikely .text.*_unlikely)
+    *(.text.exit .text.exit.*)
+    *(.text.startup .text.startup.*)
+    *(.text.hot .text.hot.*)
+    *(.text .stub .text.* .gnu.linkonce.t.*)
+    /* .gnu.warning sections are handled specially by elf32.em.  */
+    *(.gnu.warning)
+    *(.glue_7t) *(.glue_7) *(.vfp11_veneer) *(.v4_bx)
+  }
+  .fini           :
+  {
+    KEEP (*(SORT_NONE(.fini)))
+  }
+  PROVIDE (__etext = .);
+  PROVIDE (_etext = .);
+  PROVIDE (etext = .);
+  .rodata         : { *(.rodata .rodata.* .gnu.linkonce.r.*) }
+  .rodata1        : { *(.rodata1) }
+  .ARM.extab   : { *(.ARM.extab* .gnu.linkonce.armextab.*) }
+   PROVIDE_HIDDEN (__exidx_start = .);
+  .ARM.exidx   : { *(.ARM.exidx* .gnu.linkonce.armexidx.*) }
+   PROVIDE_HIDDEN (__exidx_end = .);
+  .eh_frame_hdr : { *(.eh_frame_hdr) }
+  .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) }
+  .gcc_except_table   : ONLY_IF_RO { *(.gcc_except_table
+  .gcc_except_table.*) }
+  /* These sections are generated by the Sun/Oracle C++ compiler.  */
+  .exception_ranges   : ONLY_IF_RO { *(.exception_ranges
+  .exception_ranges*) }
+  /* Adjust the address for the data segment.  We want to adjust up to
+     the same address within the page on the next page up.  */
+  . = ALIGN (CONSTANT (MAXPAGESIZE)) - ((CONSTANT (MAXPAGESIZE) - .) & (CONSTANT (MAXPAGESIZE) - 1)); . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE));
+  /* Exception handling  */
+  .eh_frame       : ONLY_IF_RW { KEEP (*(.eh_frame)) }
+  .gcc_except_table   : ONLY_IF_RW { *(.gcc_except_table .gcc_except_table.*) }
+  .exception_ranges   : ONLY_IF_RW { *(.exception_ranges .exception_ranges*) }
+  /* Thread Local Storage sections  */
+  .tdata	  : { *(.tdata .tdata.* .gnu.linkonce.td.*) }
+  .tbss		  : { *(.tbss .tbss.* .gnu.linkonce.tb.*) *(.tcommon) }
+  .preinit_array     :
+  {
+    PROVIDE_HIDDEN (__preinit_array_start = .);
+    KEEP (*(.preinit_array))
+    PROVIDE_HIDDEN (__preinit_array_end = .);
+  }
+  .init_array     :
+  {
+    PROVIDE_HIDDEN (__init_array_start = .);
+    KEEP (*(SORT(.init_array.*)))
+    KEEP (*(.init_array))
+    PROVIDE_HIDDEN (__init_array_end = .);
+  }
+  .fini_array     :
+  {
+    PROVIDE_HIDDEN (__fini_array_start = .);
+    KEEP (*(SORT(.fini_array.*)))
+    KEEP (*(.fini_array))
+    PROVIDE_HIDDEN (__fini_array_end = .);
+  }
+  .ctors          :
+  {
+    /* gcc uses crtbegin.o to find the start of
+       the constructors, so we make sure it is
+       first.  Because this is a wildcard, it
+       doesn't matter if the user does not
+       actually link against crtbegin.o; the
+       linker won't look for a file to match a
+       wildcard.  The wildcard also means that it
+       doesn't matter which directory crtbegin.o
+       is in.  */
+    KEEP (*crtbegin.o(.ctors))
+    KEEP (*crtbegin?.o(.ctors))
+    /* We don't want to include the .ctor section from
+       the crtend.o file until after the sorted ctors.
+       The .ctor section from the crtend file contains the
+       end of ctors marker and it must be last */
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .ctors))
+    KEEP (*(SORT(.ctors.*)))
+    KEEP (*(.ctors))
+  }
+  .dtors          :
+  {
+    KEEP (*crtbegin.o(.dtors))
+    KEEP (*crtbegin?.o(.dtors))
+    KEEP (*(EXCLUDE_FILE (*crtend.o *crtend?.o ) .dtors))
+    KEEP (*(SORT(.dtors.*)))
+    KEEP (*(.dtors))
+  }
+  .jcr            : { KEEP (*(.jcr)) }
+  .data.rel.ro : { *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*) *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*) }
+  .dynamic        : { *(.dynamic) }
+  . = DATA_SEGMENT_RELRO_END (0, .);
+  .got            : { *(.got.plt) *(.igot.plt) *(.got) *(.igot) }
+  .data           :
+  {
+    PROVIDE (__data_start = .);
+    *(.data .data.* .gnu.linkonce.d.*)
+    SORT(CONSTRUCTORS)
+  }
+  .data1          : { *(.data1) }
+  _edata = .; PROVIDE (edata = .);
+  . = .;
+  __bss_start = .;
+  __bss_start__ = .;
+  .bss            :
+  {
+   *(.dynbss)
+   *(.bss .bss.* .gnu.linkonce.b.*)
+   *(COMMON)
+   /* Align here to ensure that the .bss section occupies space up to
+      _end.  Align after .bss to ensure correct alignment even if the
+      .bss section disappears because there are no input sections.
+      FIXME: Why do we need it? When there is no .bss section, we don't
+      pad the .data section.  */
+   . = ALIGN(. != 0 ? 32 / 8 : 1);
+  }
+  _bss_end__ = . ; __bss_end__ = . ;
+  . = ALIGN(32 / 8);
+  . = ALIGN(32 / 8);
+  __end__ = . ;
+  _end = .; PROVIDE (end = .);
+  . = DATA_SEGMENT_END (.);
+  /* Stabs debugging sections.  */
+  .stab          0 : { *(.stab) }
+  .stabstr       0 : { *(.stabstr) }
+  .stab.excl     0 : { *(.stab.excl) }
+  .stab.exclstr  0 : { *(.stab.exclstr) }
+  .stab.index    0 : { *(.stab.index) }
+  .stab.indexstr 0 : { *(.stab.indexstr) }
+  .comment       0 : { *(.comment) }
+  /* DWARF debug sections.
+     Symbols in the DWARF debugging sections are relative to the beginning
+     of the section so we begin them at 0.  */
+  /* DWARF 1 */
+  .debug          0 : { *(.debug) }
+  .line           0 : { *(.line) }
+  /* GNU DWARF 1 extensions */
+  .debug_srcinfo  0 : { *(.debug_srcinfo) }
+  .debug_sfnames  0 : { *(.debug_sfnames) }
+  /* DWARF 1.1 and DWARF 2 */
+  .debug_aranges  0 : { *(.debug_aranges) }
+  .debug_pubnames 0 : { *(.debug_pubnames) }
+  /* DWARF 2 */
+  .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+  .debug_abbrev   0 : { *(.debug_abbrev) }
+  .debug_line     0 : { *(.debug_line) }
+  .debug_frame    0 : { *(.debug_frame) }
+  .debug_str      0 : { *(.debug_str) }
+  .debug_loc      0 : { *(.debug_loc) }
+  .debug_macinfo  0 : { *(.debug_macinfo) }
+  /* SGI/MIPS DWARF 2 extensions */
+  .debug_weaknames 0 : { *(.debug_weaknames) }
+  .debug_funcnames 0 : { *(.debug_funcnames) }
+  .debug_typenames 0 : { *(.debug_typenames) }
+  .debug_varnames  0 : { *(.debug_varnames) }
+  /* DWARF 3 */
+  .debug_pubtypes 0 : { *(.debug_pubtypes) }
+  .debug_ranges   0 : { *(.debug_ranges) }
+  /* DWARF Extension.  */
+  .debug_macro    0 : { *(.debug_macro) }
+  .gnu.attributes 0 : { KEEP (*(.gnu.attributes)) }
+  .note.gnu.arm.ident 0 : { KEEP (*(.note.gnu.arm.ident)) }
+  /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(.gnu.lto_*) }
+}
+
+
+==================================================
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crt1.o succeeded
+/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crt1.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crti.o succeeded
+/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crti.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/crtbeginT.o succeeded
+/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/crtbeginT.o
+attempt to open applets/built-in.o succeeded
+applets/built-in.o
+attempt to open archival/lib.a succeeded
+attempt to open archival/libarchive/lib.a succeeded
+attempt to open console-tools/lib.a succeeded
+attempt to open coreutils/lib.a succeeded
+attempt to open coreutils/libcoreutils/lib.a succeeded
+attempt to open debianutils/lib.a succeeded
+attempt to open klibc-utils/lib.a succeeded
+attempt to open e2fsprogs/lib.a succeeded
+attempt to open editors/lib.a succeeded
+attempt to open findutils/lib.a succeeded
+attempt to open init/lib.a succeeded
+attempt to open libbb/lib.a succeeded
+(libbb/lib.a)appletlib.o
+(libbb/lib.a)compare_string_array.o
+(libbb/lib.a)concat_path_file.o
+(libbb/lib.a)default_error_retval.o
+(libbb/lib.a)get_last_path_component.o
+(libbb/lib.a)last_char_is.o
+(libbb/lib.a)llist.o
+(libbb/lib.a)messages.o
+(libbb/lib.a)perror_msg.o
+(libbb/lib.a)ptr_to_globals.o
+(libbb/lib.a)skip_whitespace.o
+(libbb/lib.a)verror_msg.o
+(libbb/lib.a)wfopen.o
+(libbb/lib.a)xfunc_die.o
+(libbb/lib.a)xfuncs.o
+(libbb/lib.a)xfuncs_printf.o
+(libbb/lib.a)xreadlink.o
+(libbb/lib.a)copyfd.o
+(libbb/lib.a)full_write.o
+(libbb/lib.a)read.o
+(libbb/lib.a)safe_write.o
+(libbb/lib.a)signals.o
+(libbb/lib.a)time.o
+(libbb/lib.a)bb_strtonum.o
+attempt to open libpwdgrp/lib.a succeeded
+(libpwdgrp/lib.a)pwd_grp.o
+(libpwdgrp/lib.a)uidgid_get.o
+attempt to open loginutils/lib.a succeeded
+(loginutils/lib.a)add-remove-shell.o
+(loginutils/lib.a)addgroup.o
+(loginutils/lib.a)adduser.o
+(loginutils/lib.a)chpasswd.o
+(loginutils/lib.a)cryptpw.o
+(loginutils/lib.a)deluser.o
+(loginutils/lib.a)getty.o
+(loginutils/lib.a)login.o
+(loginutils/lib.a)passwd.o
+(loginutils/lib.a)su.o
+(loginutils/lib.a)sulogin.o
+(loginutils/lib.a)vlock.o
+attempt to open mailutils/lib.a succeeded
+(mailutils/lib.a)makemime.o
+(mailutils/lib.a)popmaildir.o
+(mailutils/lib.a)reformime.o
+(mailutils/lib.a)sendmail.o
+(mailutils/lib.a)mail.o
+attempt to open miscutils/lib.a succeeded
+(miscutils/lib.a)adjtimex.o
+(miscutils/lib.a)beep.o
+(miscutils/lib.a)chat.o
+(miscutils/lib.a)conspy.o
+(miscutils/lib.a)crond.o
+(miscutils/lib.a)crontab.o
+(miscutils/lib.a)dc.o
+(miscutils/lib.a)devmem.o
+(miscutils/lib.a)fbsplash.o
+(miscutils/lib.a)hdparm.o
+(miscutils/lib.a)hexedit.o
+(miscutils/lib.a)i2c_tools.o
+(miscutils/lib.a)less.o
+(miscutils/lib.a)lsscsi.o
+(miscutils/lib.a)makedevs.o
+(miscutils/lib.a)man.o
+(miscutils/lib.a)microcom.o
+(miscutils/lib.a)mt.o
+(miscutils/lib.a)nandwrite.o
+(miscutils/lib.a)partprobe.o
+(miscutils/lib.a)raidautorun.o
+(miscutils/lib.a)readahead.o
+(miscutils/lib.a)runlevel.o
+(miscutils/lib.a)rx.o
+(miscutils/lib.a)setfattr.o
+(miscutils/lib.a)setserial.o
+(miscutils/lib.a)strings.o
+(miscutils/lib.a)time.o
+(miscutils/lib.a)ttysize.o
+(miscutils/lib.a)ubi_tools.o
+(miscutils/lib.a)ubirename.o
+(miscutils/lib.a)volname.o
+(miscutils/lib.a)watchdog.o
+attempt to open modutils/lib.a succeeded
+(modutils/lib.a)modinfo.o
+(modutils/lib.a)modprobe-small.o
+(modutils/lib.a)modutils.o
+attempt to open networking/lib.a succeeded
+(networking/lib.a)arp.o
+(networking/lib.a)arping.o
+(networking/lib.a)brctl.o
+(networking/lib.a)dnsd.o
+(networking/lib.a)ether-wake.o
+(networking/lib.a)ftpd.o
+(networking/lib.a)ftpgetput.o
+(networking/lib.a)hostname.o
+(networking/lib.a)httpd.o
+(networking/lib.a)ifconfig.o
+(networking/lib.a)ifenslave.o
+(networking/lib.a)ifplugd.o
+(networking/lib.a)ifupdown.o
+(networking/lib.a)inetd.o
+(networking/lib.a)interface.o
+(networking/lib.a)ip.o
+(networking/lib.a)ipcalc.o
+(networking/lib.a)isrv_identd.o
+(networking/lib.a)nameif.o
+(networking/lib.a)nbd-client.o
+(networking/lib.a)nc.o
+(networking/lib.a)netstat.o
+(networking/lib.a)nslookup.o
+(networking/lib.a)ntpd.o
+(networking/lib.a)parse_pasv_epsv.o
+(networking/lib.a)ping.o
+(networking/lib.a)pscan.o
+(networking/lib.a)route.o
+(networking/lib.a)slattach.o
+(networking/lib.a)ssl_client.o
+(networking/lib.a)tc.o
+(networking/lib.a)tcpudp.o
+(networking/lib.a)tcpudp_perhost.o
+(networking/lib.a)telnet.o
+(networking/lib.a)telnetd.o
+(networking/lib.a)tftp.o
+(networking/lib.a)tls.o
+(networking/lib.a)tls_aes.o
+(networking/lib.a)tls_pstm.o
+(networking/lib.a)tls_pstm_montgomery_reduce.o
+(networking/lib.a)tls_pstm_mul_comba.o
+(networking/lib.a)tls_pstm_sqr_comba.o
+(networking/lib.a)tls_rsa.o
+(networking/lib.a)traceroute.o
+(networking/lib.a)tunctl.o
+(networking/lib.a)vconfig.o
+(networking/lib.a)wget.o
+(networking/lib.a)whois.o
+(networking/lib.a)zcip.o
+(networking/lib.a)isrv.o
+attempt to open networking/libiproute/lib.a succeeded
+(networking/libiproute/lib.a)ip_parse_common_args.o
+(networking/libiproute/lib.a)ipaddress.o
+(networking/libiproute/lib.a)iplink.o
+(networking/libiproute/lib.a)ipneigh.o
+(networking/libiproute/lib.a)iproute.o
+(networking/libiproute/lib.a)iprule.o
+(networking/libiproute/lib.a)iptunnel.o
+(networking/libiproute/lib.a)libnetlink.o
+(networking/libiproute/lib.a)ll_addr.o
+(networking/libiproute/lib.a)ll_map.o
+(networking/libiproute/lib.a)ll_proto.o
+(networking/libiproute/lib.a)ll_types.o
+(networking/libiproute/lib.a)rt_names.o
+(networking/libiproute/lib.a)rtm_map.o
+(networking/libiproute/lib.a)utils.o
+attempt to open networking/udhcp/lib.a succeeded
+(networking/udhcp/lib.a)dhcpc.o
+(networking/udhcp/lib.a)dhcpd.o
+(networking/udhcp/lib.a)dhcprelay.o
+(networking/udhcp/lib.a)domain_codec.o
+(networking/udhcp/lib.a)dumpleases.o
+(networking/udhcp/lib.a)packet.o
+(networking/udhcp/lib.a)signalpipe.o
+(networking/udhcp/lib.a)socket.o
+(networking/udhcp/lib.a)arpping.o
+(networking/udhcp/lib.a)common.o
+attempt to open printutils/lib.a succeeded
+(printutils/lib.a)lpd.o
+(printutils/lib.a)lpr.o
+attempt to open procps/lib.a succeeded
+(procps/lib.a)free.o
+(procps/lib.a)fuser.o
+(procps/lib.a)iostat.o
+(procps/lib.a)kill.o
+(procps/lib.a)lsof.o
+(procps/lib.a)mpstat.o
+(procps/lib.a)nmeter.o
+(procps/lib.a)pgrep.o
+(procps/lib.a)pidof.o
+(procps/lib.a)pmap.o
+(procps/lib.a)powertop.o
+(procps/lib.a)ps.o
+(procps/lib.a)pstree.o
+(procps/lib.a)pwdx.o
+(procps/lib.a)smemcap.o
+(procps/lib.a)sysctl.o
+(procps/lib.a)top.o
+(procps/lib.a)uptime.o
+(procps/lib.a)watch.o
+attempt to open runit/lib.a succeeded
+(runit/lib.a)chpst.o
+(runit/lib.a)runsv.o
+(runit/lib.a)runsvdir.o
+(runit/lib.a)sv.o
+(runit/lib.a)svlogd.o
+attempt to open selinux/lib.a succeeded
+attempt to open shell/lib.a succeeded
+(shell/lib.a)ash.o
+(shell/lib.a)ash_ptr_hack.o
+(shell/lib.a)cttyhack.o
+(shell/lib.a)hush.o
+(shell/lib.a)match.o
+(shell/lib.a)math.o
+(shell/lib.a)random.o
+(shell/lib.a)shell_common.o
+attempt to open sysklogd/lib.a succeeded
+(sysklogd/lib.a)klogd.o
+(sysklogd/lib.a)logread.o
+(sysklogd/lib.a)syslogd_and_logger.o
+attempt to open util-linux/lib.a succeeded
+(util-linux/lib.a)acpid.o
+(util-linux/lib.a)blkdiscard.o
+(util-linux/lib.a)blkid.o
+(util-linux/lib.a)blockdev.o
+(util-linux/lib.a)cal.o
+(util-linux/lib.a)chrt.o
+(util-linux/lib.a)dmesg.o
+(util-linux/lib.a)eject.o
+(util-linux/lib.a)fallocate.o
+(util-linux/lib.a)fatattr.o
+(util-linux/lib.a)fbset.o
+(util-linux/lib.a)fdformat.o
+(util-linux/lib.a)fdisk.o
+(util-linux/lib.a)findfs.o
+(util-linux/lib.a)flock.o
+(util-linux/lib.a)freeramdisk.o
+(util-linux/lib.a)fsck_minix.o
+(util-linux/lib.a)fsfreeze.o
+(util-linux/lib.a)fstrim.o
+(util-linux/lib.a)getopt.o
+(util-linux/lib.a)hexdump.o
+(util-linux/lib.a)hexdump_xxd.o
+(util-linux/lib.a)hwclock.o
+(util-linux/lib.a)ionice.o
+(util-linux/lib.a)ipcrm.o
+(util-linux/lib.a)ipcs.o
+(util-linux/lib.a)last_fancy.o
+(util-linux/lib.a)losetup.o
+(util-linux/lib.a)lspci.o
+(util-linux/lib.a)lsusb.o
+(util-linux/lib.a)mdev.o
+(util-linux/lib.a)mesg.o
+(util-linux/lib.a)mkfs_ext2.o
+(util-linux/lib.a)mkfs_minix.o
+(util-linux/lib.a)mkfs_vfat.o
+(util-linux/lib.a)mkswap.o
+(util-linux/lib.a)more.o
+(util-linux/lib.a)mount.o
+(util-linux/lib.a)mountpoint.o
+(util-linux/lib.a)nsenter.o
+(util-linux/lib.a)pivot_root.o
+(util-linux/lib.a)rdate.o
+(util-linux/lib.a)rdev.o
+(util-linux/lib.a)readprofile.o
+(util-linux/lib.a)renice.o
+(util-linux/lib.a)rev.o
+(util-linux/lib.a)rtcwake.o
+(util-linux/lib.a)script.o
+(util-linux/lib.a)scriptreplay.o
+(util-linux/lib.a)setarch.o
+(util-linux/lib.a)setpriv.o
+(util-linux/lib.a)setsid.o
+(util-linux/lib.a)swaponoff.o
+(util-linux/lib.a)switch_root.o
+(util-linux/lib.a)taskset.o
+(util-linux/lib.a)uevent.o
+(util-linux/lib.a)umount.o
+(util-linux/lib.a)unshare.o
+(util-linux/lib.a)wall.o
+attempt to open util-linux/volume_id/lib.a succeeded
+(util-linux/volume_id/lib.a)get_devname.o
+(util-linux/volume_id/lib.a)volume_id.o
+(util-linux/volume_id/lib.a)xfs.o
+(util-linux/volume_id/lib.a)bcache.o
+(util-linux/volume_id/lib.a)btrfs.o
+(util-linux/volume_id/lib.a)cramfs.o
+(util-linux/volume_id/lib.a)exfat.o
+(util-linux/volume_id/lib.a)ext.o
+(util-linux/volume_id/lib.a)f2fs.o
+(util-linux/volume_id/lib.a)fat.o
+(util-linux/volume_id/lib.a)hfs.o
+(util-linux/volume_id/lib.a)iso9660.o
+(util-linux/volume_id/lib.a)jfs.o
+(util-linux/volume_id/lib.a)lfs.o
+(util-linux/volume_id/lib.a)linux_raid.o
+(util-linux/volume_id/lib.a)linux_swap.o
+(util-linux/volume_id/lib.a)luks.o
+(util-linux/volume_id/lib.a)minix.o
+(util-linux/volume_id/lib.a)nilfs.o
+(util-linux/volume_id/lib.a)ntfs.o
+(util-linux/volume_id/lib.a)ocfs2.o
+(util-linux/volume_id/lib.a)reiserfs.o
+(util-linux/volume_id/lib.a)romfs.o
+(util-linux/volume_id/lib.a)squashfs.o
+(util-linux/volume_id/lib.a)sysv.o
+(util-linux/volume_id/lib.a)ubifs.o
+(util-linux/volume_id/lib.a)udf.o
+(util-linux/volume_id/lib.a)util.o
+attempt to open archival/built-in.o succeeded
+attempt to open archival/libarchive/built-in.o succeeded
+attempt to open console-tools/built-in.o succeeded
+attempt to open coreutils/built-in.o succeeded
+attempt to open coreutils/libcoreutils/built-in.o succeeded
+attempt to open debianutils/built-in.o succeeded
+attempt to open klibc-utils/built-in.o succeeded
+attempt to open e2fsprogs/built-in.o succeeded
+attempt to open editors/built-in.o succeeded
+attempt to open findutils/built-in.o succeeded
+attempt to open init/built-in.o succeeded
+attempt to open libbb/built-in.o succeeded
+attempt to open libpwdgrp/built-in.o succeeded
+attempt to open loginutils/built-in.o succeeded
+attempt to open mailutils/built-in.o succeeded
+attempt to open miscutils/built-in.o succeeded
+attempt to open modutils/built-in.o succeeded
+attempt to open networking/built-in.o succeeded
+attempt to open networking/libiproute/built-in.o succeeded
+attempt to open networking/udhcp/built-in.o succeeded
+attempt to open printutils/built-in.o succeeded
+attempt to open procps/built-in.o succeeded
+attempt to open runit/built-in.o succeeded
+attempt to open selinux/built-in.o succeeded
+attempt to open shell/built-in.o succeeded
+attempt to open sysklogd/built-in.o succeeded
+attempt to open util-linux/built-in.o succeeded
+attempt to open util-linux/volume_id/built-in.o succeeded
+(archival/lib.a)bbunzip.o
+(archival/lib.a)bzip2.o
+(archival/lib.a)cpio.o
+(archival/lib.a)dpkg.o
+(archival/lib.a)dpkg_deb.o
+(archival/lib.a)gzip.o
+(archival/lib.a)lzop.o
+(archival/lib.a)rpm.o
+(archival/lib.a)tar.o
+(archival/lib.a)unzip.o
+(archival/libarchive/lib.a)common.o
+(archival/libarchive/lib.a)data_extract_all.o
+(archival/libarchive/lib.a)data_extract_to_command.o
+(archival/libarchive/lib.a)data_extract_to_stdout.o
+(archival/libarchive/lib.a)data_skip.o
+(archival/libarchive/lib.a)decompress_bunzip2.o
+(archival/libarchive/lib.a)decompress_gunzip.o
+(archival/libarchive/lib.a)decompress_unlzma.o
+(archival/libarchive/lib.a)decompress_unxz.o
+(archival/libarchive/lib.a)filter_accept_list.o
+(archival/libarchive/lib.a)filter_accept_list_reassign.o
+(archival/libarchive/lib.a)filter_accept_reject_list.o
+(archival/libarchive/lib.a)find_list_entry.o
+(archival/libarchive/lib.a)get_header_cpio.o
+(archival/libarchive/lib.a)get_header_tar.o
+(archival/libarchive/lib.a)get_header_tar_bz2.o
+(archival/libarchive/lib.a)get_header_tar_gz.o
+(archival/libarchive/lib.a)get_header_tar_lzma.o
+(archival/libarchive/lib.a)get_header_tar_xz.o
+(archival/libarchive/lib.a)header_list.o
+(archival/libarchive/lib.a)header_verbose_list.o
+(archival/libarchive/lib.a)init_handle.o
+(archival/libarchive/lib.a)lzo1x_1.o
+(archival/libarchive/lib.a)lzo1x_1o.o
+(archival/libarchive/lib.a)lzo1x_d.o
+(archival/libarchive/lib.a)open_transformer.o
+(archival/libarchive/lib.a)seek_by_jump.o
+(archival/libarchive/lib.a)seek_by_read.o
+(archival/libarchive/lib.a)unpack_ar_archive.o
+(archival/libarchive/lib.a)unsafe_prefix.o
+(archival/libarchive/lib.a)unsafe_symlink_target.o
+(archival/libarchive/lib.a)data_align.o
+(archival/libarchive/lib.a)filter_accept_all.o
+(archival/libarchive/lib.a)get_header_ar.o
+(archival/libarchive/lib.a)header_skip.o
+(console-tools/lib.a)chvt.o
+(console-tools/lib.a)clear.o
+(console-tools/lib.a)deallocvt.o
+(console-tools/lib.a)dumpkmap.o
+(console-tools/lib.a)fgconsole.o
+(console-tools/lib.a)kbd_mode.o
+(console-tools/lib.a)loadfont.o
+(console-tools/lib.a)loadkmap.o
+(console-tools/lib.a)openvt.o
+(console-tools/lib.a)reset.o
+(console-tools/lib.a)resize.o
+(console-tools/lib.a)setconsole.o
+(console-tools/lib.a)setkeycodes.o
+(console-tools/lib.a)setlogcons.o
+(console-tools/lib.a)showkey.o
+(coreutils/lib.a)basename.o
+(coreutils/lib.a)cat.o
+(coreutils/lib.a)chgrp.o
+(coreutils/lib.a)chmod.o
+(coreutils/lib.a)chown.o
+(coreutils/lib.a)chroot.o
+(coreutils/lib.a)cksum.o
+(coreutils/lib.a)comm.o
+(coreutils/lib.a)cp.o
+(coreutils/lib.a)cut.o
+(coreutils/lib.a)date.o
+(coreutils/lib.a)dd.o
+(coreutils/lib.a)df.o
+(coreutils/lib.a)dirname.o
+(coreutils/lib.a)dos2unix.o
+(coreutils/lib.a)du.o
+(coreutils/lib.a)echo.o
+(coreutils/lib.a)env.o
+(coreutils/lib.a)expand.o
+(coreutils/lib.a)expr.o
+(coreutils/lib.a)factor.o
+(coreutils/lib.a)false.o
+(coreutils/lib.a)fold.o
+(coreutils/lib.a)fsync.o
+(coreutils/lib.a)head.o
+(coreutils/lib.a)hostid.o
+(coreutils/lib.a)id.o
+(coreutils/lib.a)install.o
+(coreutils/lib.a)link.o
+(coreutils/lib.a)ln.o
+(coreutils/lib.a)logname.o
+(coreutils/lib.a)ls.o
+(coreutils/lib.a)md5_sha1_sum.o
+(coreutils/lib.a)mkdir.o
+(coreutils/lib.a)mkfifo.o
+(coreutils/lib.a)mknod.o
+(coreutils/lib.a)mktemp.o
+(coreutils/lib.a)mv.o
+(coreutils/lib.a)nice.o
+(coreutils/lib.a)nl.o
+(coreutils/lib.a)nohup.o
+(coreutils/lib.a)nproc.o
+(coreutils/lib.a)od.o
+(coreutils/lib.a)paste.o
+(coreutils/lib.a)printenv.o
+(coreutils/lib.a)printf.o
+(coreutils/lib.a)pwd.o
+(coreutils/lib.a)readlink.o
+(coreutils/lib.a)realpath.o
+(coreutils/lib.a)rm.o
+(coreutils/lib.a)rmdir.o
+(coreutils/lib.a)seq.o
+(coreutils/lib.a)shred.o
+(coreutils/lib.a)shuf.o
+(coreutils/lib.a)sleep.o
+(coreutils/lib.a)sort.o
+(coreutils/lib.a)split.o
+(coreutils/lib.a)stat.o
+(coreutils/lib.a)stty.o
+(coreutils/lib.a)sum.o
+(coreutils/lib.a)sync.o
+(coreutils/lib.a)tac.o
+(coreutils/lib.a)tail.o
+(coreutils/lib.a)tee.o
+(coreutils/lib.a)test.o
+(coreutils/lib.a)test_ptr_hack.o
+(coreutils/lib.a)timeout.o
+(coreutils/lib.a)touch.o
+(coreutils/lib.a)tr.o
+(coreutils/lib.a)true.o
+(coreutils/lib.a)truncate.o
+(coreutils/lib.a)tty.o
+(coreutils/lib.a)uname.o
+(coreutils/lib.a)uniq.o
+(coreutils/lib.a)unlink.o
+(coreutils/lib.a)usleep.o
+(coreutils/lib.a)uudecode.o
+(coreutils/lib.a)uuencode.o
+(coreutils/lib.a)wc.o
+(coreutils/lib.a)who.o
+(coreutils/lib.a)whoami.o
+(coreutils/lib.a)yes.o
+(coreutils/libcoreutils/lib.a)cp_mv_stat.o
+(coreutils/libcoreutils/lib.a)getopt_mk_fifo_nod.o
+(debianutils/lib.a)pipe_progress.o
+(debianutils/lib.a)run_parts.o
+(debianutils/lib.a)start_stop_daemon.o
+(debianutils/lib.a)which.o
+(klibc-utils/lib.a)nuke.o
+(klibc-utils/lib.a)resume.o
+(e2fsprogs/lib.a)chattr.o
+(e2fsprogs/lib.a)e2fs_lib.o
+(e2fsprogs/lib.a)fsck.o
+(e2fsprogs/lib.a)lsattr.o
+(editors/lib.a)awk.o
+(editors/lib.a)cmp.o
+(editors/lib.a)diff.o
+(editors/lib.a)ed.o
+(editors/lib.a)patch.o
+(editors/lib.a)sed.o
+(editors/lib.a)vi.o
+(findutils/lib.a)find.o
+(findutils/lib.a)grep.o
+(findutils/lib.a)xargs.o
+(init/lib.a)bootchartd.o
+(init/lib.a)halt.o
+(init/lib.a)init.o
+(libbb/lib.a)ask_confirmation.o
+(libbb/lib.a)auto_string.o
+(libbb/lib.a)bb_askpass.o
+(libbb/lib.a)bb_bswap_64.o
+(libbb/lib.a)bb_cat.o
+(libbb/lib.a)bb_do_delay.o
+(libbb/lib.a)bb_getgroups.o
+(libbb/lib.a)bb_getsockname.o
+(libbb/lib.a)bb_pwd.o
+(libbb/lib.a)bb_qsort.o
+(libbb/lib.a)capability.o
+(libbb/lib.a)change_identity.o
+(libbb/lib.a)chomp.o
+(libbb/lib.a)common_bufsiz.o
+(libbb/lib.a)concat_subpath_file.o
+(libbb/lib.a)copy_file.o
+(libbb/lib.a)correct_password.o
+(libbb/lib.a)crc32.o
+(libbb/lib.a)device_open.o
+(libbb/lib.a)dump.o
+(libbb/lib.a)endofname.o
+(libbb/lib.a)executable.o
+(libbb/lib.a)fclose_nonstdin.o
+(libbb/lib.a)fflush_stdout_and_exit.o
+(libbb/lib.a)fgets_str.o
+(libbb/lib.a)find_mount_point.o
+(libbb/lib.a)find_pid_by_name.o
+(libbb/lib.a)find_root_device.o
+(libbb/lib.a)get_console.o
+(libbb/lib.a)get_cpu_count.o
+(libbb/lib.a)get_line_from_file.o
+(libbb/lib.a)get_shell_name.o
+(libbb/lib.a)get_volsize.o
+(libbb/lib.a)getopt32.o
+(libbb/lib.a)getopt_allopts.o
+(libbb/lib.a)getpty.o
+(libbb/lib.a)hash_md5_sha.o
+(libbb/lib.a)herror_msg.o
+(libbb/lib.a)human_readable.o
+(libbb/lib.a)in_ether.o
+(libbb/lib.a)inet_cksum.o
+(libbb/lib.a)inet_common.o
+(libbb/lib.a)inode_hash.o
+(libbb/lib.a)isdirectory.o
+(libbb/lib.a)isqrt.o
+(libbb/lib.a)kernel_version.o
+(libbb/lib.a)lineedit.o
+(libbb/lib.a)lineedit_ptr_hack.o
+(libbb/lib.a)logenv.o
+(libbb/lib.a)login.o
+(libbb/lib.a)loop.o
+(libbb/lib.a)make_directory.o
+(libbb/lib.a)makedev.o
+(libbb/lib.a)match_fstype.o
+(libbb/lib.a)mode_string.o
+(libbb/lib.a)nuke_str.o
+(libbb/lib.a)obscure.o
+(libbb/lib.a)parse_config.o
+(libbb/lib.a)parse_mode.o
+(libbb/lib.a)percent_decode.o
+(libbb/lib.a)perror_nomsg_and_die.o
+(libbb/lib.a)pidfile.o
+(libbb/lib.a)print_flags.o
+(libbb/lib.a)print_numbered_lines.o
+(libbb/lib.a)printable.o
+(libbb/lib.a)printable_string.o
+(libbb/lib.a)process_escape_sequence.o
+(libbb/lib.a)procps.o
+(libbb/lib.a)progress.o
+(libbb/lib.a)pw_encrypt.o
+(libbb/lib.a)read_key.o
+(libbb/lib.a)read_printf.o
+(libbb/lib.a)recursive_action.o
+(libbb/lib.a)remove_file.o
+(libbb/lib.a)replace.o
+(libbb/lib.a)rtc.o
+(libbb/lib.a)run_shell.o
+(libbb/lib.a)safe_gethostname.o
+(libbb/lib.a)safe_poll.o
+(libbb/lib.a)safe_strncpy.o
+(libbb/lib.a)securetty.o
+(libbb/lib.a)setup_environment.o
+(libbb/lib.a)simplify_path.o
+(libbb/lib.a)single_argv.o
+(libbb/lib.a)speed_table.o
+(libbb/lib.a)str_tolower.o
+(libbb/lib.a)strrstr.o
+(libbb/lib.a)sysconf.o
+(libbb/lib.a)trim.o
+(libbb/lib.a)u_signal_names.o
+(libbb/lib.a)ubi.o
+(libbb/lib.a)udp_io.o
+(libbb/lib.a)unicode.o
+(libbb/lib.a)update_passwd.o
+(libbb/lib.a)utmp.o
+(libbb/lib.a)uuencode.o
+(libbb/lib.a)vfork_daemon_rexec.o
+(libbb/lib.a)warn_ignoring_args.o
+(libbb/lib.a)wfopen_input.o
+(libbb/lib.a)write.o
+(libbb/lib.a)xatonum.o
+(libbb/lib.a)xconnect.o
+(libbb/lib.a)xgetcwd.o
+(libbb/lib.a)xgethostbyname.o
+(libbb/lib.a)xrealloc_vector.o
+(libbb/lib.a)xregcomp.o
+(libbb/lib.a)perror_nomsg.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/../../../../arm-linux-gnueabihf/lib/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/lib/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/libm.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a succeeded
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)s_sin.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)w_atan2.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)w_exp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)w_log.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)w_pow.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)w_sqrt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)m_isnan.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)m_finite.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)m_signbit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)branred.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)dosincos.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)sincos32.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)sincostab.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)k_standard.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)s_lib_version.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)s_matherr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)fraiseexcpt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)e_atan2.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)e_exp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)e_log.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)e_pow.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)e_sqrt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)s_rint.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)mpa.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)mpatan2.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)mpatan.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)mplog.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)mpsqrt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)slowexp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)slowpow.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)halfulp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libm.a)mpexp.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/../../../../arm-linux-gnueabihf/lib/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/lib/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/libresolv.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a succeeded
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)res_data.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)res_mkquery.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)res_query.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)res_send.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)ns_parse.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)ns_name.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)ns_netint.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)ns_samedomain.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)res_comp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)res_debug.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)ns_ttl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)ns_print.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libresolv.a)base64.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a succeeded
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_udivsi3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_divsi3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_lshrdi3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_ashrdi3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_ashldi3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_arm_addsubdf3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_aeabi_ldivmod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_aeabi_uldivmod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_dvmd_lnx.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_fixdfdi.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_fixunsdfdi.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)bpabi.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_divdi3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc.a)_udivdi3.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc_eh.a succeeded
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc_eh.a)unwind-arm.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc_eh.a)libunwind.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc_eh.a)pr-support.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/../../../../arm-linux-gnueabihf/lib/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/lib/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/libc.a failed
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a succeeded
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc-start.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)check_fds.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc-tls.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)elf-init.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)errno.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc-do-syscall.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)errno-loc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)assert.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ctype-info.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dcgettext.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dcigettext.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)finddomain.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)loadmsgcat.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)localealias.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)l10nflist.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)explodename.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)plural.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)plural-exp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)hash-string.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setjmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigjmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)bsd-_setjmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)longjmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)__longjmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)jmp-unwind.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)signal.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)raise.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)killpg.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigaction.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigprocmask.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)kill.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigsuspend.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigempty.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigfillset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigaddset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigdelset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigismem.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigisempty.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigtimedwait.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sigrestorer.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)atof.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)atoi.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)atoll.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)abort.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)bsearch.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)msort.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getenv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)putenv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setenv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)exit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)cxa_atexit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)div.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)random.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)random_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rand.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtol.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtoul.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtoll.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtoull.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtol_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtoul_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtoll_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtoull_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtod_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)system.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)canonicalize.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)grouping.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tens_in_limb.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fpioconst.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vfprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)printf_fp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)reg-printf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)printf_fphex.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)reg-modifier.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)reg-type.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)printf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)snprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)asprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fscanf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)scanf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sscanf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getline.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rename.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)funlockfile.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)printf-parsemb.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fxprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofclose.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofdopen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofflush.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofgets.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofopen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofputs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofread.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofwrite.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iogetdelim.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iogetline.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iopadn.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iopopen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ioputs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iosetvbuf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ioungetc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iovsprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iovsscanf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofopen64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)putchar_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)clearerr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fileno.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fputc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pclose.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)putc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rewind.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setbuf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vasprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iovdprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vsnprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fcloseall.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)freopen64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fseeko64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ftello64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc_fatal.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)feof_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ferror_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fputc_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getc_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getchar_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)putc_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofgets_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofputs_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iowpadn.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wgenops.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wfileops.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fileops.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)genops.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stdfiles.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stdio.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strops.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)malloc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)morecore.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcat.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strchr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcspn.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strverscmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strdup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strndup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strerror.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)_strerror.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strlen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strnlen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strncmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strncpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strrchr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strpbrk.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strsignal.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strspn.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strstr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtok.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtok_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memchr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memcmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memmove.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mempcpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stpcpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcasecmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strncase.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcasecmp_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strncase_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memcpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wordcopy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strsep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcasestr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rawmemchr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strchrnul.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)argz-count.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)argz-stringify.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memrchr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wmemcpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wmemset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wmemmove.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wmempcpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcrtomb.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcsrtombs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mbsnrtowcs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcsnlen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcsmbsload.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ctime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gmtime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)localtime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mktime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)time.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gettimeofday.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)settimeofday.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tzset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tzfile.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strptime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strptime_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strftime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strftime_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)alt_digit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)era.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lc-time-cleanup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)opendir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)closedir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)readdir64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setgroups.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)uname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)times.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wait.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)waitpid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wait3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wait4.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)alarm.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sleep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pause.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nanosleep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fork.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vfork.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)_exit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execve.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execle.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execvp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execlp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)execvpe.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getppid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getuid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)geteuid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getgid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getegid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getgroups.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setuid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setgid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setpgid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpgrp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setpgrp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setsid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getresuid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getresgid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setresuid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setresgid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sysconf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)glob64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fnmatch.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)confstr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getopt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getopt1.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_getp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_sets.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_gets.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_yield.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_primax.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_primin.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_getaffinity.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sched_setaffinity.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pread64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)get_child_max.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getaddrinfo.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)regex.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getlogin_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)environ.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)exit-thread.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mkfifo.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fstat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lstat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)xstat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fxstat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lxstat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mknod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)xmknod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fxstatat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)statfs64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)statvfs64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)umask.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)chmod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fchmod.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mkdir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)open.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)open64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)openat.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)close.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)read.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)write.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)access.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fcntl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)flock.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dup2.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dup3.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pipe.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pipe2.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)creat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)chdir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fchdir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getcwd.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)chown.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fchown.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lchown.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ttyname_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)isatty.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)link.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)symlink.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)readlink.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)unlink.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rmdir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)poll.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)posix_fallocate64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sendfile64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)have_o_cloexec.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)internal_statvfs64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)speed.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)cfsetspeed.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcsetattr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcgetattr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcgetpgrp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcsetpgrp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcdrain.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcflush.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcsendbrk.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)cfmakeraw.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tcgetsid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getrlimit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getrlimit64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setrlimit64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpriority.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setpriority.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nice.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sbrk.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ioctl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)writev.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)seteuid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setegid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpagesize.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getdtsz.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sethostname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)select.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)acct.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)chroot.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fsync.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sync.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fdatasync.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)syncfs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)reboot.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethostid.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)swapon.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)swapoff.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mktemp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mkstemp64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mkdtemp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)usleep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mntent.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mntent_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)utimes.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lutimes.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ftruncate64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getusershell.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)syslog.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)syscall.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)daemon.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mmap.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mmap64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)munmap.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mprotect.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)madvise.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mlock.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)munlock.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tsearch.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsysstats.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dirname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getclktck.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lremovexattr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lsetxattr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)removexattr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setxattr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)init-misc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)llseek.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)umount2.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)readahead.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)makedev.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)adjtimex.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)capget.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)capset.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)klogctl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mount.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mremap.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)personality.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pivot_root.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)prctl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sysinfo.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)unshare.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setns.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)accept.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)bind.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)connect.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpeername.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsockname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsockopt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)listen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)recv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)recvfrom.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)recvmsg.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)send.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sendmsg.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sendto.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setsockopt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)shutdown.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)socket.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)socketpair.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)have_sock_cloexec.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)cmsg_nxthdr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)msgget.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)msgctl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)semop.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)semget.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)semctl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)shmat.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)shmdt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)shmget.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)shmctl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wctrans.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)towctrans.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcfuncs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wctype.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iswctype.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)alloca_cutoff.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc-lowlevellock.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc-cancellation.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)register-atfork.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)libc_multiple_threads.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)herror.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)inet_addr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)inet_ntop.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)inet_pton.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nsap_addr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)res_init.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)res_hconf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)res_libc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nsswitch.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)hosts-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vfprintf_chk.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)readonly-area.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stack_chk_fail.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fortify_fail.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)backtrace.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)backtracesymsfd.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)idn-stub.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)inet_mkadr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)inet_ntoa.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)herrno.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)herrno-loc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethstbyad.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethstbyad_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethstbynm.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethstbynm2_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethstbynm_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsrvbynm.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsrvbynm_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsrvbypt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getsrvbypt_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ether_aton_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ether_hton.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)in6_addr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getnameinfo.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)if_index.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ifaddrs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)check_pf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)check_native.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ifreq.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nscd_gethst_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nscd_getai.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nscd_getserv_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nscd_helper.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)grantpt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)unlockpt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ptsname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getutent_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)utmp_file.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)utmpname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setutxent.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getutxent.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)endutxent.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pututxline.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)utmpxname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)updwtmpx.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-support.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-addr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)enbl-secure.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-profstub.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-libc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-sysdep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)init-first.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sysdep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_open.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_close.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_db.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_conf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_builtin.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_simple.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_trans.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_cache.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gconv_dl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)catnames.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setlocale.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)findlocale.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)loadlocale.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)loadarchive.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-ctype.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-time.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)SYS_libc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C_name.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)xlocale.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)global-locale.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)coll-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lc-ctype.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lc-monetary.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lc-numeric.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lc-collate.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-messages.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-monetary.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-numeric.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-paper.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-name.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-address.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-telephone.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-measurement.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-identification.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)C-collate.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)localename.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)s_isinf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setfpucw.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fpu_control.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)allocrtsig.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)add_n.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)cmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)divrem.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lshift.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rshift.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mul.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mul_1.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mul_n.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sub_n.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)submul_1.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dbl2mpn.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mpn2dbl.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)qsort.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)secure-getenv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)_itoa.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)_itowa.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)itoa-digits.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)itoa-udigits.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)itowa-digits.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vfscanf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tempname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)vfwprintf.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)errlist.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)siglist.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)printf-parsewc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)filedoalloc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ioftell.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ioseekoff.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iosetbuffer.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofwide.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fseek.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)memstream.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ftello.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)iofread_u.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wfiledoalloc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlerror.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdladdr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdladdr1.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlinfo.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlmopen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcoll.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)stpncpy.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)argz-ctsep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)argz-addsep.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)basename.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strcoll_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcscat.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcschr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcslen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wmemchr.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)btowc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mbrlen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mbrtowc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mbsrtowcs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcschrnul.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcscoll.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcscoll_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mbsrtowcs_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)offtime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)asctime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setitimer.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)readdir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)rewinddir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getdents.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getdents64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fdopendir.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getgrnam_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpwnam_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpwuid_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)glob.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pwrite64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)xstat.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)fstatfs64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)openat64.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)lseek.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)xstatconv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)internal_statvfs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)setrlimit.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)brk.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)readv.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)gethostname.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)opensock.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)grp-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)pwd-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)service-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)ethers-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)digits_dots.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nis_hash.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nscd_getpw_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)nscd_getgr_r.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getpt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)getutent.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)updwtmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-load.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-cache.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-lookup.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-object.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-reloc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-error.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-debug.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-misc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-profile.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-tls.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-origin.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-scope.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-execstack.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-open.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-close.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-trampoline.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-tsd.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)tlsdesc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-tlsdesc.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)aeabi_read_tp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)addmul_1.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtof.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtold.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtof_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)strtold_l.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlopen.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlclose.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlsym.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)sdlvsym.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)wcscmp.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)statfs.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)profil.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)prof-freq.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-deps.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-runtime.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-init.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-fini.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-version.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)dl-sym.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/libc.a)mpn2flt.o
+(/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/libgcc_eh.a)unwind-c.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/crtend.o succeeded
+/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.7.3/crtend.o
+attempt to open /opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crtn.o succeeded
+/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crtn.olibbb/lib.a(inet_common.o): In function `INET6_resolve':
+inet_common.c:(.text.INET6_resolve+0x22): warning: Using 'getaddrinfo' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+coreutils/lib.a(mktemp.o): In function `mktemp_main':
+mktemp.c:(.text.mktemp_main+0x4e): warning: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+networking/lib.a(ipcalc.o): In function `ipcalc_main':
+ipcalc.c:(.text.ipcalc_main+0x154): warning: Using 'gethostbyaddr' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+libbb/lib.a(inet_common.o): In function `INET_resolve':
+inet_common.c:(.text.INET_resolve+0x32): warning: Using 'gethostbyname' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+networking/lib.a(inetd.o): In function `reread_config_file':
+inetd.c:(.text.reread_config_file+0x154): warning: Using 'getservbyname' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+networking/lib.a(netstat.o): In function `ip_port_str':
+netstat.c:(.text.ip_port_str+0x34): warning: Using 'getservbyport' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+
