@@ -12,6 +12,7 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 #include <linux/io.h>
+#include <linux/of.h>
 
 #include "chip_gpio_ops.h"
 #include "led_dev.h"
@@ -62,37 +63,58 @@ static struct gpio_operations gpio_ops = {
 };
 
 int led_drv_probe(struct platform_device *pdev) {
-    struct resource *res;
-    int              i = 0;
+    struct device_node *np;
+    int                 err;
+    uint32_t            led_pin_val;
 
-    while (1) {
-        res = platform_get_resource(pdev, IORESOURCE_IRQ, i);
-        if (!res)
-            break;
+    np = pdev->dev.of_node;
+    if (!np)
+        return -1;
 
-        g_led_pins[g_led_cnt++] = res->start;
-        led_device_create(i);
-        ++i;
-    }
+    err = of_property_read_u32(np, "pin", &led_pin_val);
+    if (err < 0)
+        return -1;
+
+    g_led_pins[g_led_cnt] = led_pin_val;
+    led_device_create(g_led_cnt++);
 
     return 0;
 }
 
 int led_drv_remove(struct platform_device *pdev) {
-    struct resource *res;
-    int              i = 0;
+    struct device_node *np;
+    int                 err;
+    int                 i;
+    uint32_t            led_pin_val;
 
-    while (1) {
-        res = platform_get_resource(pdev, IORESOURCE_IRQ, i);
-        if (!res)
+    np = pdev->dev.of_node;
+    if (!np)
+        return -1;
+
+    err = of_property_read_u32(np, "pin", &led_pin_val);
+    if (err < 0)
+        return -1;
+
+    // set g_led_pins[i] = -1, and destroy led device
+    for (i = 0; i < g_led_cnt; i++)
+        if (g_led_pins[i] == led_pin_val) {
+            led_device_destroy(i);
+            g_led_pins[i] = -1;
             break;
+        }
+    for (i = 0; i < g_led_cnt; i++)
+        if (g_led_pins[i] != -1)
+            break;
+    if (i == g_led_cnt)
+        g_led_cnt = 0;
 
-        led_device_destroy(i);
-        g_led_cnt--;
-        ++i;
-    }
     return 0;
 }
+
+static const struct of_device_id myleds[] = {
+    {.compatible = "myled-of"},
+    {},
+};
 
 
 static struct platform_driver led_drv = {
@@ -100,7 +122,8 @@ static struct platform_driver led_drv = {
     .remove = led_drv_remove,
     .driver =
         {
-            .name = "myled",
+            .name           = "myled",
+            .of_match_table = myleds,
         },
 };
 

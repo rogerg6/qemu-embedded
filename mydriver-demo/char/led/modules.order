@@ -1,3 +1,2 @@
 kernel//home/rogerg6/code/os/mydriver-demo/char/led/led_drv.ko
-kernel//home/rogerg6/code/os/mydriver-demo/char/led/led_dev.ko
 kernel//home/rogerg6/code/os/mydriver-demo/char/led/chip_gpio_ops.ko

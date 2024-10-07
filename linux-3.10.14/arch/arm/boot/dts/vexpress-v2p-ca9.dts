@@ -9,6 +9,8 @@
 
 /dts-v1/;
 
+#define GROUP_PIN(g,p) ((g<<16) | (p))
+
 / {
 	model = "V2P-CA9";
 	arm,hbi = <0x191>;
@@ -19,6 +21,19 @@
 	#size-cells = <1>;
 
 	chosen { };
+
+	led@0 {
+		compatible = "myled-of";
+		pin = <GROUP_PIN(4,1)>;
+	};
+	led@1 {
+		compatible = "myled-of";
+		pin = <GROUP_PIN(4,2)>;
+	};
+	led@2 {
+		compatible = "myled-of";
+		pin = <GROUP_PIN(4,3)>;
+	};
 
 	aliases {
 		serial0 = &v2m_serial0;
