@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TOOLCHAIN=/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux
-TOOLCHAIN_BIN=/opt/toolchains/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux/bin
+TOOLCHAIN=${PWD}/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux
+TOOLCHAIN_BIN=${TOOLCHAIN}/bin
 export PATH=${TOOLCHAIN_BIN}:${PATH}
 
 ARCH=arm
