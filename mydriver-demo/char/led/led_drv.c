@@ -17,6 +17,7 @@
 #include <linux/tty.h>
 #include <linux/kmod.h>
 #include <linux/gfp.h>
+#include <linux/printk.h>
 
 #include "chip_gpio_ops.h"
 
@@ -45,6 +46,7 @@ EXPORT_SYMBOL(register_led_operations);
 static int led_open(struct inode *inode, struct file *file) {
     int minor = -1;
     printk(KERN_INFO "%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    WARN_ON(1);
     minor = iminor(inode);
     led_ops->init(minor);
     return 0;
@@ -52,11 +54,13 @@ static int led_open(struct inode *inode, struct file *file) {
 
 static int led_close(struct inode *inode, struct file *file) {
     printk(KERN_INFO "%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    WARN_ON(1); 
     return 0;
 }
 
 static ssize_t led_read(struct file *file, char __user *buf, size_t size, loff_t *offset) {
     printk(KERN_INFO "%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    WARN_ON(1); 
     unsigned long nr;
     nr = copy_to_user(buf, char_buf, MIN(1024, size));
     return nr;
@@ -66,6 +70,7 @@ static ssize_t led_write(struct file *file, const char __user *buf, size_t size,
     ssize_t nw;
     int     minor = -1;
     printk(KERN_INFO "%s %s %d\n", __FILE__, __FUNCTION__, __LINE__);
+    WARN_ON(1); 
     nw = copy_from_user((void *)char_buf, buf, MIN(1024, size));
 
     minor = iminor(file_inode(file));

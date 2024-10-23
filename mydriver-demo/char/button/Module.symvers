@@ -1,0 +1,2 @@
+0x00000000	register_button_operations	/home/rogerg6/qemu-embedded/mydriver-demo/char/button/button_drv	EXPORT_SYMBOL
+0x00000000	unregister_button_operations	/home/rogerg6/qemu-embedded/mydriver-demo/char/button/button_drv	EXPORT_SYMBOL

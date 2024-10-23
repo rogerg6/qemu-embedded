@@ -19,8 +19,9 @@ unset LD_PRELOAD
 select_build_mode() {
     echo "Please select build mode :"
     echo "    1 : build"
-    echo "    2 : menuconfig"
-    echo "    3 : clean"
+    echo "    2 : build & generate compile_commands.json"
+    echo "    3 : menuconfig"
+    echo "    4 : clean"
 
     echo -e ">>> \c"
     while true
@@ -28,7 +29,7 @@ select_build_mode() {
         read mode
         if echo $mode | grep -q '[^0-9]'; then
             echo " Input error"
-        elif [ $mode -lt 1 -o $mode -gt 3 ]; then
+        elif [ $mode -lt 1 -o $mode -gt 4 ]; then
             echo " Input error"
         else
             return $mode
@@ -38,24 +39,38 @@ select_build_mode() {
 }
 
 build_kernel() {
-    if test $1 -eq 1; then
+    if test $1 -le 2; then
+        BEAR_CMD=""
+        if test $1 -eq 2; then
+            BEAR_CMD="bear"
+            BEAR_CMD_APPEND="bear -a"
+        fi
         # uImage
-        make -C ${KERNEL_DIR} ARCH=${ARCH} CROSS_COMPILE=${COMPILER} LOADADDR=0x60003000 \
+        ${BEAR_CMD} make -C ${KERNEL_DIR} ARCH=${ARCH} CROSS_COMPILE=${COMPILER} LOADADDR=0x60003000 \
             uImage vexpress-v2p-ca9.dtb -j${NPROC}
         cp ${KERNEL_DIR}/arch/${ARCH}/boot/zImage ./zImage-${ARCH}-${BOARD}
         cp ${KERNEL_DIR}/arch/${ARCH}/boot/dts/vexpress-v2p-ca9.dtb ./
 
         # modules
         rm -rf ./rootfs/home/*
-        make -C ./mydriver-demo/platform ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
+        ${BEAR_CMD_APPEND} make -C ./mydriver-demo/platform ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
         cp ./mydriver-demo/platform/*.ko ./rootfs/home
-        # char dev
-        make -C ./mydriver-demo/char/led ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
 
-    elif test $1 -eq 2; then
-        make -C ${KERNEL_DIR} ARCH=${ARCH} menuconfig
+        # led
+        ${BEAR_CMD_APPEND} make -C ./mydriver-demo/char/led ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
+        cp ./mydriver-demo/char/led/led_drv.ko ./rootfs/home
+        cp ./mydriver-demo/char/led/chip_gpio_ops.ko ./rootfs/home
+        cp ./mydriver-demo/char/led/led_drv_test ./rootfs/home
+        # button
+        ${BEAR_CMD_APPEND} make -C ./mydriver-demo/char/button ARCH=${ARCH} CROSS_COMPILE=${COMPILER}
+        cp ./mydriver-demo/char/button/button_drv.ko ./rootfs/home
+        cp ./mydriver-demo/char/button/board_xxx.ko  ./rootfs/home
+        cp ./mydriver-demo/char/button/button_drv_test  ./rootfs/home
 
     elif test $1 -eq 3; then
+        make -C ${KERNEL_DIR} ARCH=${ARCH} menuconfig
+
+    elif test $1 -eq 4; then
         make -C ${KERNEL_DIR} distclean
         make -C ./mydriver-demo ARCH=${ARCH} CROSS_COMPILE=${COMPILER} clean
         cp ${KERNEL_DIR}/${KERNEL_CONFIG} ${KERNEL_DIR}/.config

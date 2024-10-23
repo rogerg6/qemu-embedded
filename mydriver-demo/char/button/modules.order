@@ -1,0 +1,2 @@
+kernel//home/rogerg6/qemu-embedded/mydriver-demo/char/button/button_drv.ko
+kernel//home/rogerg6/qemu-embedded/mydriver-demo/char/button/board_xxx.ko

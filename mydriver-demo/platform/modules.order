@@ -1,2 +1,2 @@
-kernel//home/rogerg6/code/os/mydriver-demo/platform/mydev.ko
-kernel//home/rogerg6/code/os/mydriver-demo/platform/mydrv.ko
+kernel//home/rogerg6/qemu-embedded/mydriver-demo/platform/mydev.ko
+kernel//home/rogerg6/qemu-embedded/mydriver-demo/platform/mydrv.ko
