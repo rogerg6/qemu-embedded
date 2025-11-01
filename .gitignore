@@ -8,3 +8,6 @@ linux-5.10.186
 **/*.cmd
 .cache
 **/.tmp_versions
+.clangd
+out
+.env
