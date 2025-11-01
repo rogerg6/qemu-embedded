@@ -8,11 +8,11 @@ else
 fi
 
 
-if [ ${FIRM_VERSION} = "firm_2.6.24" ]; then
+if [ ${FIRM_VERSION} = "firm-2.6.24" ]; then
     echo "No supported !!!"
-elif [ ${FIRM_VERSION} = "firm_3.10.14" ]; then
+elif [ ${FIRM_VERSION} = "firm-3.10.14" ]; then
     qemu-system-arm -M vexpress-a9 \
-                    -kernel ${OUT_DIR}/zImage-arm-vexpress-a9 \
+                    -kernel ${OUT_DIR}/zImage \
                     -dtb ${OUT_DIR}/vexpress-v2p-ca9.dtb \
                     -m 512M \
                     -serial mon:stdio \

@@ -31,7 +31,7 @@ ARCH=arm
 BOARD=vexpress-a9
 COMPILER=arm-linux-gnueabihf-
 NPROC=16
-TOOLCHAIN=${PWD}/toolchain/gcc-linaro-arm-linux-gnueabihf-4.7-2013.04-20130415_linux
+TOOLCHAIN=${PWD}/toolchain/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabihf
 TOOLCHAIN_BIN=${TOOLCHAIN}/bin
 export PATH=${TOOLCHAIN_BIN}:${PATH}
 
@@ -66,18 +66,18 @@ update_env() {
         else
             case ${config} in
             1)
-                FIRM_VERSION="firm_2.6.24"
-                KERNEL_DIR=${TOP_DIR}/kernel/linux2.6.24
+                FIRM_VERSION="firm-2.6.24"
+                KERNEL_DIR=${TOP_DIR}/kernel/linux-2.6.24
                 KERNEL_CFG=${KERNEL_DIR}/smb_t32vn_config
                 ROOTFS_DIR=${TOP_DIR}/rootfs/
-                OUT_DIR=${TOP_DIR}/out/firm_2.6.24
+                OUT_DIR=${TOP_DIR}/out/firm-2.6.24
                 ;;
             2)
-                FIRM_VERSION="firm_3.10.14"
-                KERNEL_DIR=${TOP_DIR}/kernel/linux3.10.14
+                FIRM_VERSION="firm-3.10.14"
+                KERNEL_DIR=${TOP_DIR}/kernel/linux-3.10.14
                 KERNEL_CFG=${KERNEL_DIR}/config.arm.vexpress-a9
                 ROOTFS_DIR=${TOP_DIR}/rootfs/rootfs-3.10.14
-                OUT_DIR=${TOP_DIR}/out/firm_3.10.14
+                OUT_DIR=${TOP_DIR}/out/firm-3.10.14
                 ;;
             ?)
                 log_err "unkonw argument"
@@ -161,18 +161,18 @@ build_kernel() {
     #     cp ${kernel_cfg} ${TASSADAR_ENV_KERNEL_DIR}/.config
     # fi
 
-    if [ ${FIRM_VERSION} = "firm_2.6.24" ]; then
+    if [ ${FIRM_VERSION} = "firm-2.6.24" ]; then
         echo "no supported"
-    elif [ ${FIRM_VERSION} = "firm_3.10.14" ]; then 
+    elif [ ${FIRM_VERSION} = "firm-3.10.14" ]; then 
         build_3.10.14_kernel
     fi
 
 }
 
 build_roofs() {
-    if [ ${FIRM_VERSION} = "firm_2.6.24" ]; then
+    if [ ${FIRM_VERSION} = "firm-2.6.24" ]; then
         echo "no supported"
-    elif [ ${FIRM_VERSION} = "firm_3.10.14" ]; then 
+    elif [ ${FIRM_VERSION} = "firm-3.10.14" ]; then 
         build_3.10.14_rootfs
     fi
 }
@@ -187,9 +187,9 @@ print_env() {
         color=${green}
     fi
 
-    echo -e "${color}################# $1 start #################${none}"
+    echo -e "${color}################# $1 start #################\n"
     cat .env
-    echo -e "${color}################# $1 end   #################${none}"
+    echo -e "\n################# $1 end   #################${none}"
 }
 
 

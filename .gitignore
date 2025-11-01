@@ -11,3 +11,4 @@ linux-5.10.186
 .clangd
 out
 .env
+rootfs/rootfs-3.10.14.bak

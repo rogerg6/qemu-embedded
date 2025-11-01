@@ -6,10 +6,10 @@ build_3.10.14_kernel() {
     echo ${KERNEL_DIR}
     echo $PATH
     make -C ${KERNEL_DIR} ARCH=${ARCH} CROSS_COMPILE=${COMPILER} LOADADDR=0x60003000 uImage vexpress-v2p-ca9.dtb -j${NPROC}
-    echo "make -C ${KERNEL_DIR} ARCH=${ARCH} CROSS_COMPILE=${COMPILER} LOADADDR=0x60003000 uImage vexpress-v2p-ca9.dtb -j${NPROC}"
 
-    cp ${KERNEL_DIR}/arch/${ARCH}/boot/zImage ${OUT_DIR}/zImage-${ARCH}-${BOARD}
+    cp ${KERNEL_DIR}/arch/${ARCH}/boot/zImage ${OUT_DIR}/
     cp ${KERNEL_DIR}/arch/${ARCH}/boot/dts/vexpress-v2p-ca9.dtb ${OUT_DIR}
+    log_info "zImage and dtb is generated in: ${OUT_DIR}"
     exit
 
     # modules
@@ -30,18 +30,25 @@ build_3.10.14_kernel() {
 }
 
 build_3.10.14_rootfs_dir() {
-    rm -rf rootfs
-    cp -r ${BUSYBOX_DIR}/_install ${ROOTFS_DIR}
+    rm -rf ${ROOTFS_DIR}
+    mkdir -p ${ROOTFS_DIR}
     pushd ${ROOTFS_DIR}
 
+    # busybox
+    cp -r ${BUSYBOX_DIR}/_install/* .
     # /usr
     mkdir -p ./usr/lib
+    cp -rL ${TOOLCHAIN}/arm-linux-gnueabihf/libc/usr/lib/* ./usr/lib
 
     # /lib
     mkdir ./lib
-    cp -rL ${TOOLCHAIN}/arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/* ./lib
-    cp -rL ${TOOLCHAIN}/arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/* ./usr/lib
+    cp -rL ${TOOLCHAIN}/arm-linux-gnueabihf/libc/lib/* ./lib
+    rm libstdc++.*
+    rm -rf debug
 
+    arm-linux-gnueabihf-strip ./lib/*
+    arm-linux-gnueabihf-strip ./usr/lib/*
+    
     # /dev
     mkdir ./dev
     # cd ./dev
@@ -103,6 +110,7 @@ mount -a
 build_3.10.14_rootfs_img() {
     rm -f ${OUT_DIR}/rootfs.img
     mkfs.cramfs ${ROOTFS_DIR} ${OUT_DIR}/rootfs.img
+    log_info "rootfs.img is generated in ${OUT_DIR} !"
 }
 
 build_3.10.14_rootfs() {
@@ -116,15 +124,15 @@ build_3.10.14_rootfs() {
         read choice
         if echo $choice | grep -q '[^0-9]'; then
             log_err " Input error"
-        elif [ $choice -lt 1 -o $config -gt 2 ]; then
+        elif [ $choice -lt 1 -o $choice -gt 2 ]; then
             log_err " Input error"
         else
             break
         fi
     done    
-    if test $choice -eq 1; then
+    if [ $choice -eq 1 ]; then
         build_3.10.14_rootfs_dir
-    elif test $choice -eq 2; then
+    elif [ $choice -eq 2 ]; then
         build_3.10.14_rootfs_img
     fi 
 }
